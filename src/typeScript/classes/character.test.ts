@@ -48,6 +48,10 @@ describe('Character', () => {
       character.setLanguage('en')
       expect(character.language).toBe('en');
     });
+
+    it('should throw an error if the language is not supported', () => {
+      expect(() => character.setLanguage('not supportet')).toThrowError('Unsupported language: not supportet');
+    });
     
     // ------------------------------------------------------------ //
     // ----- ABILITY SCORES --------------------------------------- //
