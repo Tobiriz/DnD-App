@@ -1,6 +1,6 @@
 import { AbilityScores } from "../../interfaces/abilityScores.interface";
 
-export function loadAbilityScoresTranslations(lang: string, abilityScores: AbilityScores): AbilityScores {
+export function loadAbilityScoreTranslations(lang: string, abilityScores: AbilityScores): AbilityScores {
     const translation = require(`../../../locales/${lang}.json`);
 
     const newAbilityScores: AbilityScores = {

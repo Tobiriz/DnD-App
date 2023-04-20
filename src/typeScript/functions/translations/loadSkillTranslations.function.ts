@@ -1,6 +1,6 @@
 import { Skills } from '../../interfaces/skills.interface';
 
-export function loadSkillsTranslations(lang: string, skills: Skills): Skills {
+export function loadSkillTranslations(lang: string, skills: Skills): Skills {
     const translation = require(`../../../locales/${lang}.json`);
 
     const newSkills: Skills = {
