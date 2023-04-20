@@ -1,0 +1,33 @@
+#diary {
+    width: 100%;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    border-bottom: 1px solid black;
+
+    background: grey;
+
+    a {
+        text-decoration: none;
+        color: black;
+        padding: 1rem 0;
+        font-size: 2rem;
+        width: 100%;
+
+        &:hover {
+            background-color: var(--color-teal);
+        }
+    }
+
+    a:nth-child(1) {
+        border-right: 1px solid black;
+    }
+
+    a:nth-child(2) {
+        border-left: 1px solid black;
+    }
+}

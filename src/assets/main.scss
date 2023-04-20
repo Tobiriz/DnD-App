@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'MedievalSharp', cursive;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.no-dec {
+    text-decoration: none;
+}
+
+.button-std {
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
