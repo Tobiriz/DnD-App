@@ -1,8 +1,14 @@
+interface AbilityScore {
+    name: string;
+    displayName: string;
+    value: number;
+}
+
 export interface AbilityScores {
-    strength: number;
-    dexterity: number;
-    constitution: number;
-    intelligence: number;
-    wisdom: number;
-    charisma: number;
+    strength: AbilityScore;
+    dexterity: AbilityScore;
+    constitution: AbilityScore;
+    intelligence: AbilityScore;
+    wisdom: AbilityScore;
+    charisma: AbilityScore;
 }
