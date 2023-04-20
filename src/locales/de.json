@@ -1,0 +1,42 @@
+{
+    "character": {
+        "abilities": {
+            "strength": "Stärke",
+            "dexterity": "Geschicklichkeit",
+            "constitution": "Konstitution",
+            "intelligence": "Intelligenz",
+            "wisdom": "Weisheit",
+            "charisma": "Charisma"
+        },
+
+        "skills": {
+            "acrobatics": "Akrobatik",
+            "animalHandling": "Mit Tieren umgehen",
+            "arcana": "Arkane Kunde",
+            "athletics": "Athletik",
+            "deception": "Täuschen",
+            "history": "Geschichte",
+            "insight": "Motiv erkennen",
+            "intimidation": "Einschüchtern",
+            "investigation": "Nachforschung",
+            "medicine": "Heilkunde",
+            "nature": "Naturkunde",
+            "perception": "Wahrnehmung",
+            "performance": "Auftreten",
+            "persuasion": "Überzeugen",
+            "religion": "Religion",
+            "sleightOfHand": "Fingerfertigkeit",
+            "stealth": "Heimlichkeit",
+            "survival": "Überlebenskunst",
+
+            "abilityShorts": {
+                "str": "STK",
+                "dex": "GES",
+                "con": "KON",
+                "int": "INT",
+                "wis": "WEI",
+                "cha": "CHA"
+            }
+        }
+    }
+}

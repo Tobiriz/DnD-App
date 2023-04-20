@@ -1,0 +1,42 @@
+{
+    "character": {
+        "abilities": {
+            "strength": "Strength",
+            "dexterity": "Dexterity",
+            "constitution": "Constitution",
+            "intelligence": "Intelligence",
+            "wisdom": "Wisdom",
+            "charisma": "Charisma"
+        },
+
+        "skills": {
+            "acrobatics": "Acrobatics",
+            "animalHandling": "Animal Handling",
+            "arcana": "Arcana",
+            "athletics": "Athletics",
+            "deception": "Deception",
+            "history": "History",
+            "insight": "Insight",
+            "intimidation": "Intimidation",
+            "investigation": "Investigation",
+            "medicine": "Medicine",
+            "nature": "Nature",
+            "perception": "Perception",
+            "performance": "Performance",
+            "persuasion": "Persuasion",
+            "religion": "Religion",
+            "sleightOfHand": "Sleight of Hand",
+            "stealth": "Stealth",
+            "survival": "Survival",
+
+            "abilityShorts": {
+                "str": "STR",
+                "dex": "DEX",
+                "con": "CON",
+                "int": "INT",
+                "wis": "WIS",
+                "cha": "CHA"
+            }
+        }
+    }
+}
