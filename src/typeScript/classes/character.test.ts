@@ -1,4 +1,6 @@
 import { Character } from './character.class';
+import { Barbarian } from './races/barbarian.class'
+import { Race as RaceInterface } from '../interfaces/race.interface'
 import { AbilityScores } from '../interfaces/abilityScores.interface';
 import { Skills } from '../interfaces/skills.interface';
 
@@ -216,4 +218,34 @@ describe('Character', () => {
       expect(character.getSkillModifier('stealth')).toBe(3);
       expect(character.getSkillModifier('survival')).toBe(4);
     });
+});
+
+describe('Barbarian', () => {
+  it('should create a new instance of Barbarian', () => {
+    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
+    const barbarian = new Barbarian(raceInterface);
+
+    expect(barbarian).toBeInstanceOf(Barbarian);
+  });
+
+  it('should have the correct race interface', () => {
+    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
+    const barbarian = new Barbarian(raceInterface);
+
+    expect(barbarian.raceInterface).toEqual(raceInterface);
+  })
+
+  it('should have the correct name', () => {
+    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
+    const barbarian = new Barbarian(raceInterface);
+
+    expect(barbarian.name).toBe('barbarian');
+  })
+
+  it('should have the correct display name', () => {
+    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
+    const barbarian = new Barbarian(raceInterface);
+
+    expect(barbarian.displayName).toBe('Barbarian');
+  })
 });
