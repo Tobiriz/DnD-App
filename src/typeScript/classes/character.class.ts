@@ -16,8 +16,7 @@ export class Character {
         private _skills: Skills,
         private _proficiencyBonus: number,
     ) {
-        this._abilityScores = loadAbilityScoreTranslations(this._language, this._abilityScores);
-        this._skills = loadSkillTranslations(this._language, this._skills);
+        this.setLanguage(this._language);
     }
 
     // ----- getters and setters -----
