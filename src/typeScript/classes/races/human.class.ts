@@ -4,10 +4,14 @@ import { Race } from './race.class.abstract'
 import { Race as RaceInterface } from '../../interfaces/race.interface'
 
 
-export class Barbarian extends Race {
+export class Human extends Race {
     constructor (
-        raceInterface: RaceInterface,
     ) {
+        const raceInterface: RaceInterface = {
+            name: 'human',
+            displayName: 'Human',
+        }
+        
         super(raceInterface);
     }
 }
