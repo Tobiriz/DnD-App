@@ -21,6 +21,8 @@ import { initializeAbilityScores } from '../functions/initializations/initialize
 import { Languages } from '../enums/languages.enum';
 
 
+const TRANSLATION_PATH: string = '../../locales/';
+
 export class Character {
     private _language: Languages;
     private _name: string;
@@ -31,13 +33,13 @@ export class Character {
     constructor(
         language: Languages,
         name: string,
-        abilityScores: AbilityScoreValues,
+        abilityScoreValues: AbilityScoreValues,
         skillProficiencies: SkillProficiencies,
         proficiencyBonus: number,
     ) {
         this._language = language;
         this._name = name;
-        this._abilityScores = initializeAbilityScores(abilityScores);
+        this._abilityScores = initializeAbilityScores(abilityScoreValues);
         this._skills = initializeSkills(skillProficiencies);
         this._proficiencyBonus = proficiencyBonus;
 
@@ -92,8 +94,7 @@ export class Character {
      */
     setLanguage(language: Languages) {
         this._language = language;
-        loadAbilityScoreTranslations(this._language, this._abilityScores);
-        loadSkillTranslations(this._language, this._skills);
+        this.updateTranslations();
     }
     
     /**
@@ -112,11 +113,27 @@ export class Character {
      * @param {keyof Skills} skillName - A string that represents the name of the skill for which the modifier needs to be calculated.
      * @enum {string} - Valid skill names are: 'acrobatics', 'animalHandling', 'arcana', 'athletics', 'deception', 'history', 'insight', 'intimidation', 'investigation', 'medicine', 'nature', 'perception', 'performance', 'persuasion', 'religion', 'sleightOfHand', 'stealth', 'survival'.
      * @returns {number} A number that represents the modifier for the specified skill.
-     */
-    getSkillModifier(skillName: keyof Skills): number {
+    */
+   getSkillModifier(skillName: keyof Skills): number {
         const skill = this._skills[skillName];
         const abilityScoreModifier = this.getAbilityScoreModifier(skill.ability);
         const proficiencyBonus = skill.proficient ? this._proficiencyBonus : 0;
         return abilityScoreModifier + proficiencyBonus;
+    }
+    
+    // ----- private methods -----
+
+    private updateTranslations() {
+        const translationPath = TRANSLATION_PATH + this._language + '.json';
+        const translationFile = require(translationPath);
+
+        for (const abilityScore in this._abilityScores) {
+            this._abilityScores[abilityScore].displayName = translationFile.character.abilities[abilityScore];
+        }
+
+        for (const skill in this._skills) {
+            this._skills[skill].displayName = translationFile.character.skills[skill];
+            this._skills[skill].abilityDisplayName = translationFile.character.skills.abilityAbbreviations[this._skills[skill].ability];
+        }
     }
 }
