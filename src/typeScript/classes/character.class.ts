@@ -3,20 +3,45 @@
 import { AbilityScores } from '../interfaces/abilityScores.interface';
 import { Skills } from '../interfaces/skills.interface';
 
+// ----- import interfaces for configuration -----
+import { SkillProficiencies } from '../interfaces/configuration/skillProficiencies.interface.configuration';
+import { AbilityScoreValues } from '../interfaces/configuration/abilityScoreValues.interface.configuration';
+
+// ----- import classes -----
+
 // ----- import functions -----
 import { loadSkillTranslations } from '../functions/translations/loadSkillTranslations.function';
 import { loadAbilityScoreTranslations } from '../functions/translations/loadAbilityScoreTranslations.function';
 
+// ----- import functions for initialization -----
+import { initializeSkills } from '../functions/initializations/initializeSkills.function';
+import { initializeAbilityScores } from '../functions/initializations/initializeAbilityScores.function';
+
+// ----- import enums -----
+import { Languages } from '../enums/languages.enum';
+
 
 export class Character {
+    private _language: Languages;
+    private _name: string;
+    private _abilityScores: AbilityScores;
+    private _skills: Skills;
+    private _proficiencyBonus: number;
+
     constructor(
-        private _language: string,
-        private _name: string,
-        private _abilityScores: AbilityScores,
-        private _skills: Skills,
-        private _proficiencyBonus: number,
+        language: Languages,
+        name: string,
+        abilityScores: AbilityScoreValues,
+        skillProficiencies: SkillProficiencies,
+        proficiencyBonus: number,
     ) {
-        this.setLanguage(this._language);
+        this._language = language;
+        this._name = name;
+        this._abilityScores = initializeAbilityScores(abilityScores);
+        this._skills = initializeSkills(skillProficiencies);
+        this._proficiencyBonus = proficiencyBonus;
+
+        this.setLanguage(language);
     }
 
     // ----- getters and setters -----
@@ -62,19 +87,13 @@ export class Character {
     /**
      * Sets the language for the character sheet.
      * @param language - A string that represents the language in which the character sheet should be displayed.
-     * @enum {string} - Valid languages are: 'en' (English), 'de' (German).
+     * @enum {Languages} - Valid languages are: 'en' (English), 'de' (German).
      * @throws {Error} If an unsupported language is passed as an argument.
      */
-    setLanguage(language: string) {
-        const validLanguages: string[] = ['en', 'de'];
-
-        if (!validLanguages.includes(language)) {
-            throw new Error(`Unsupported language: ${language}`);
-        }
-
+    setLanguage(language: Languages) {
         this._language = language;
-        this._abilityScores = loadAbilityScoreTranslations(this._language, this._abilityScores);
-        this._skills = loadSkillTranslations(this._language, this._skills);
+        loadAbilityScoreTranslations(this._language, this._abilityScores);
+        loadSkillTranslations(this._language, this._skills);
     }
     
     /**
