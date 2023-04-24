@@ -1,35 +1,34 @@
-import { AbilityScoreValues } from "../../interfaces/configuration/abilityScoreValues.interface.configuration";
-import { AbilityScores } from "../../interfaces/abilityScores.interface";
+import { AbilityScoreType, AbilityScoreValues, AbilityScores } from './abilityScores';
 
 export function initializeAbilityScores(abilityScoreValues: AbilityScoreValues): AbilityScores {
     const intializedAbilityScores: AbilityScores = {
         strength: {
-            name: 'strength',
+            name: AbilityScoreType.strength,
             displayName: '',
             value: abilityScoreValues.strength,
         },
         dexterity: {
-            name: 'dexterity',
+            name: AbilityScoreType.dexterity,
             displayName: '',
             value: abilityScoreValues.dexterity,
         },
         constitution: {
-            name: 'constitution',
+            name: AbilityScoreType.constitution,
             displayName: '',
             value: abilityScoreValues.constitution,
         },
         intelligence: {
-            name: 'intelligence',
+            name: AbilityScoreType.intelligence,
             displayName: '',
             value: abilityScoreValues.intelligence,
         },
         wisdom: {
-            name: 'wisdom',
+            name: AbilityScoreType.wisdom,
             displayName: '',
             value: abilityScoreValues.wisdom,
         },
         charisma: {
-            name: 'charisma',
+            name: AbilityScoreType.charisma,
             displayName: '',
             value: abilityScoreValues.charisma,
         }
