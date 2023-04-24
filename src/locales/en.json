@@ -29,13 +29,13 @@
             "stealth": "Stealth",
             "survival": "Survival",
 
-            "abilityShorts": {
-                "str": "STR",
-                "dex": "DEX",
-                "con": "CON",
-                "int": "INT",
-                "wis": "WIS",
-                "cha": "CHA"
+            "abilityAbbreviations": {
+                "strength": "STR",
+                "dexterity": "DEX",
+                "constitution": "CON",
+                "intelligence": "INT",
+                "wisdom": "WIS",
+                "charisma": "CHA"
             }
         }
     }

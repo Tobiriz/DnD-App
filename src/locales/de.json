@@ -29,13 +29,13 @@
             "stealth": "Heimlichkeit",
             "survival": "Überlebenskunst",
 
-            "abilityShorts": {
-                "str": "STK",
-                "dex": "GES",
-                "con": "KON",
-                "int": "INT",
-                "wis": "WEI",
-                "cha": "CHA"
+            "abilityAbbreviations": {
+                "strength": "STK",
+                "dexterity": "GES",
+                "constitution": "KON",
+                "intelligence": "INT",
+                "wisdom": "WEI",
+                "charisma": "CHA"
             }
         }
     }
