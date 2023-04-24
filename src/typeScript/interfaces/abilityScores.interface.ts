@@ -5,6 +5,7 @@ interface AbilityScore {
 }
 
 export interface AbilityScores {
+    [key: string]: AbilityScore;
     strength: AbilityScore;
     dexterity: AbilityScore;
     constitution: AbilityScore;
