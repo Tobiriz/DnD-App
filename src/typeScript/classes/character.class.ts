@@ -10,8 +10,6 @@ import { AbilityScoreValues } from '../interfaces/configuration/abilityScoreValu
 // ----- import classes -----
 
 // ----- import functions -----
-import { loadSkillTranslations } from '../functions/translations/loadSkillTranslations.function';
-import { loadAbilityScoreTranslations } from '../functions/translations/loadAbilityScoreTranslations.function';
 
 // ----- import functions for initialization -----
 import { initializeSkills } from '../functions/initializations/initializeSkills.function';
@@ -19,6 +17,8 @@ import { initializeAbilityScores } from '../functions/initializations/initialize
 
 // ----- import enums -----
 import { Languages } from '../enums/languages.enum';
+
+// ----- import types -----
 
 
 const TRANSLATION_PATH: string = '../../locales/';
@@ -123,17 +123,32 @@ export class Character {
     
     // ----- private methods -----
 
+    /**
+     * Updates the display names of the ability scores and skills in the current
+     * instance, based on the selected language.
+     */
     private updateTranslations() {
+        // Build the path to the translation JSON file for the selected language
         const translationPath = TRANSLATION_PATH + this._language + '.json';
+        // Import the translation JSON file
         const translationFile = require(translationPath);
 
+        // Iterate over the ability scores in the current instance
         for (const abilityScore in this._abilityScores) {
-            this._abilityScores[abilityScore].displayName = translationFile.character.abilities[abilityScore];
+            // Cast the ability score to a specific type
+            const key = abilityScore as keyof AbilityScores;
+            // Update the display name of the ability score based on the translation JSON file
+            this._abilityScores[key].displayName = translationFile.character.abilities[key];
         }
 
+        // Iterate over the skills in the current instance
         for (const skill in this._skills) {
-            this._skills[skill].displayName = translationFile.character.skills[skill];
-            this._skills[skill].abilityDisplayName = translationFile.character.skills.abilityAbbreviations[this._skills[skill].ability];
+            // Cast the skill to a specific type
+            const key = skill as keyof Skills;
+            // Update the display name of the skill based on the translation JSON file
+            this._skills[key].displayName = translationFile.character.skills[key];
+            // Update the associated ability display name of the skill based on the translation JSON file
+            this._skills[key].abilityDisplayName = translationFile.character.skills.abilityAbbreviations[this._skills[key].ability];
         }
     }
 }
