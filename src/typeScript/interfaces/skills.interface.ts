@@ -9,7 +9,6 @@ interface Skill {
 }
 
 export interface Skills {
-    [key: string]: Skill;
     acrobatics: Skill;
     animalHandling: Skill;
     arcana: Skill;
