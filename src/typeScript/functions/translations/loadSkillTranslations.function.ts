@@ -1,136 +1,59 @@
 import { Skills } from '../../interfaces/skills.interface';
 
-export function loadSkillTranslations(lang: string, skills: Skills): Skills {
+export function loadSkillTranslations(lang: string, skills: Skills): void {
     const translation = require(`../../../locales/${lang}.json`);
 
-    const newSkills: Skills = {
-        acrobatics: {
-            name: skills.acrobatics.name,
-            displayName: translation.character.skills.acrobatics,
-            ability: skills.acrobatics.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.dex,
-            proficient: skills.acrobatics.proficient,
-        },
-        animalHandling: {
-            name: skills.animalHandling.name,
-            displayName: translation.character.skills.animalHandling,
-            ability: skills.animalHandling.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.wis,
-            proficient: skills.animalHandling.proficient,
-        },
-        arcana: {
-            name: skills.arcana.name,
-            displayName: translation.character.skills.arcana,
-            ability: skills.arcana.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.int,
-            proficient: skills.arcana.proficient,
-        },
-        athletics: {
-            name: skills.athletics.name,
-            displayName: translation.character.skills.athletics,
-            ability: skills.athletics.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.str,
-            proficient: skills.athletics.proficient,
-        },
-        deception: {
-            name: skills.deception.name,
-            displayName: translation.character.skills.deception,
-            ability: skills.deception.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.cha,
-            proficient: skills.deception.proficient,
-        },
-        history: {
-            name: skills.history.name,
-            displayName: translation.character.skills.history,
-            ability: skills.history.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.int,
-            proficient: skills.history.proficient,
-        },
-        insight: {
-            name: skills.insight.name,
-            displayName: translation.character.skills.insight,
-            ability: skills.insight.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.wis,
-            proficient: skills.insight.proficient,
-        },
-        intimidation: {
-            name: skills.intimidation.name,
-            displayName: translation.character.skills.intimidation,
-            ability: skills.intimidation.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.cha,
-            proficient: skills.intimidation.proficient,
-        },
-        investigation: {
-            name: skills.investigation.name,
-            displayName: translation.character.skills.investigation,
-            ability: skills.investigation.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.int,
-            proficient: skills.investigation.proficient,
-        },
-        medicine: {
-            name: skills.medicine.name,
-            displayName: translation.character.skills.medicine,
-            ability: skills.medicine.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.wis,
-            proficient: skills.medicine.proficient,
-        },
-        nature: {
-            name: skills.nature.name,
-            displayName: translation.character.skills.nature,
-            ability: skills.nature.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.int,
-            proficient: skills.nature.proficient,
-        },
-        perception: {
-            name: skills.perception.name,
-            displayName: translation.character.skills.perception,
-            ability: skills.perception.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.wis,
-            proficient: skills.perception.proficient,
-        },
-        performance: {
-            name: skills.performance.name,
-            displayName: translation.character.skills.performance,
-            ability: skills.performance.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.cha,
-            proficient: skills.performance.proficient,
-        },
-        persuasion: {
-            name: skills.persuasion.name,
-            displayName: translation.character.skills.persuasion,
-            ability: skills.persuasion.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.cha,
-            proficient: skills.persuasion.proficient,
-        },
-        religion: {
-            name: skills.religion.name,
-            displayName: translation.character.skills.religion,
-            ability: skills.religion.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.int,
-            proficient: skills.religion.proficient,
-        },
-        sleightOfHand: {
-            name: skills.sleightOfHand.name,
-            displayName: translation.character.skills.sleightOfHand,
-            ability: skills.sleightOfHand.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.dex,
-            proficient: skills.sleightOfHand.proficient,
-        },
-        stealth: {
-            name: skills.stealth.name,
-            displayName: translation.character.skills.stealth,
-            ability: skills.stealth.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.dex,
-            proficient: skills.stealth.proficient,
-        },
-        survival: {
-            name: skills.survival.name,
-            displayName: translation.character.skills.survival,
-            ability: skills.survival.ability,
-            abilityDisplayName: translation.character.skills.abilityShorts.wis,
-            proficient: skills.survival.proficient,
-        },
-    };
+    skills.acrobatics.displayName = translation.character.skills.acrobatics;
+    skills.acrobatics.abilityDisplayName = translation.character.skills.abilityShorts.dex;
 
-    return newSkills;
+    skills.animalHandling.displayName = translation.character.skills.animalHandling;
+    skills.animalHandling.abilityDisplayName = translation.character.skills.abilityShorts.wis;
+
+    skills.arcana.displayName = translation.character.skills.arcana;
+    skills.arcana.abilityDisplayName = translation.character.skills.abilityShorts.int;
+
+    skills.athletics.displayName = translation.character.skills.athletics;
+    skills.athletics.abilityDisplayName = translation.character.skills.abilityShorts.str;
+
+    skills.deception.displayName = translation.character.skills.deception;
+    skills.deception.abilityDisplayName = translation.character.skills.abilityShorts.cha;
+
+    skills.history.displayName = translation.character.skills.history;
+    skills.history.abilityDisplayName = translation.character.skills.abilityShorts.int;
+
+    skills.insight.displayName = translation.character.skills.insight;
+    skills.insight.abilityDisplayName = translation.character.skills.abilityShorts.wis;
+
+    skills.intimidation.displayName = translation.character.skills.intimidation;
+    skills.intimidation.abilityDisplayName = translation.character.skills.abilityShorts.cha;
+
+    skills.investigation.displayName = translation.character.skills.investigation;
+    skills.investigation.abilityDisplayName = translation.character.skills.abilityShorts.int;
+
+    skills.medicine.displayName = translation.character.skills.medicine;
+    skills.medicine.abilityDisplayName = translation.character.skills.abilityShorts.wis;
+
+    skills.nature.displayName = translation.character.skills.nature;
+    skills.nature.abilityDisplayName = translation.character.skills.abilityShorts.int;
+
+    skills.perception.displayName = translation.character.skills.perception;
+    skills.perception.abilityDisplayName = translation.character.skills.abilityShorts.wis;
+
+    skills.performance.displayName = translation.character.skills.performance;
+    skills.performance.abilityDisplayName = translation.character.skills.abilityShorts.cha;
+
+    skills.persuasion.displayName = translation.character.skills.persuasion;
+    skills.persuasion.abilityDisplayName = translation.character.skills.abilityShorts.cha;
+
+    skills.religion.displayName = translation.character.skills.religion;
+    skills.religion.abilityDisplayName = translation.character.skills.abilityShorts.int;
+
+    skills.sleightOfHand.displayName = translation.character.skills.sleightOfHand;
+    skills.sleightOfHand.abilityDisplayName = translation.character.skills.abilityShorts.dex;
+
+    skills.stealth.displayName = translation.character.skills.stealth;
+    skills.stealth.abilityDisplayName = translation.character.skills.abilityShorts.dex;
+
+    skills.survival.displayName = translation.character.skills.survival;
+    skills.survival.abilityDisplayName = translation.character.skills.abilityShorts.wis;
 }
