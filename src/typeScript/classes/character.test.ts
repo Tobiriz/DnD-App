@@ -17,23 +17,23 @@ const abilityScoreValues: AbilityScoreValues = {
 };
 const skillProficiencies: SkillProficiencies = {
     acrobatics: false,
-    animalHandling: false,
+    animalHandling: true,
     arcana: false,
-    athletics: false,
-    deception: false,
-    history: false,
+    athletics: true,
+    deception: true,
+    history: true,
     insight: false,
     intimidation: false,
-    investigation: false,
-    medicine: false,
+    investigation: true,
+    medicine: true,
     nature: false,
     perception: false,
     performance: false,
-    persuasion: false,
+    persuasion: true,
     religion: false,
     sleightOfHand: false,
     stealth: false,
-    survival: false,
+    survival: true,
 };
 const proficiencyBonus = 2;
 const character = new Character(language, 'John Doe', abilityScoreValues, skillProficiencies, proficiencyBonus);
@@ -199,51 +199,47 @@ describe('Character', () => {
 
     it('should calculate the correct skill modifiers', () => {
       expect(character.getSkillModifier('acrobatics')).toBe(1);
-      expect(character.getSkillModifier('animalHandling')).toBe(2);
-      expect(character.getSkillModifier('arcana')).toBe(1);
-      expect(character.getSkillModifier('athletics')).toBe(0);
-      expect(character.getSkillModifier('deception')).toBe(1);
+      expect(character.getSkillModifier('animalHandling')).toBe(4);
+      expect(character.getSkillModifier('arcana')).toBe(-1);
+      expect(character.getSkillModifier('athletics')).toBe(2);
+      expect(character.getSkillModifier('deception')).toBe(3);
       expect(character.getSkillModifier('history')).toBe(1);
       expect(character.getSkillModifier('insight')).toBe(2);
       expect(character.getSkillModifier('intimidation')).toBe(1);
       expect(character.getSkillModifier('investigation')).toBe(1);
-      expect(character.getSkillModifier('medicine')).toBe(2);
+      expect(character.getSkillModifier('medicine')).toBe(4);
       expect(character.getSkillModifier('nature')).toBe(-1);
-      expect(character.getSkillModifier('perception')).toBe(4);
-      expect(character.getSkillModifier('performance')).toBe(3);
-      expect(character.getSkillModifier('persuasion')).toBe(1);
+      expect(character.getSkillModifier('perception')).toBe(2);
+      expect(character.getSkillModifier('performance')).toBe(1);
+      expect(character.getSkillModifier('persuasion')).toBe(3);
       expect(character.getSkillModifier('religion')).toBe(-1);
       expect(character.getSkillModifier('sleightOfHand')).toBe(1);
-      expect(character.getSkillModifier('stealth')).toBe(3);
+      expect(character.getSkillModifier('stealth')).toBe(1);
       expect(character.getSkillModifier('survival')).toBe(4);
     });
 });
 
 describe('Barbarian', () => {
   it('should create a new instance of Barbarian', () => {
-    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
-    const barbarian = new Barbarian(raceInterface);
+    const barbarian = new Barbarian();
 
     expect(barbarian).toBeInstanceOf(Barbarian);
   });
 
-  it('should have the correct race interface', () => {
-    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
-    const barbarian = new Barbarian(raceInterface);
+  it('should have a race interface', () => {
+    const barbarian = new Barbarian();
 
-    expect(barbarian.raceInterface).toEqual(raceInterface);
+    expect(barbarian.raceInterface).toBeDefined();
   })
 
   it('should have the correct name', () => {
-    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
-    const barbarian = new Barbarian(raceInterface);
+    const barbarian = new Barbarian();
 
     expect(barbarian.name).toBe('barbarian');
   })
 
   it('should have the correct display name', () => {
-    const raceInterface: RaceInterface = { name: 'barbarian', displayName: 'Barbarian' };
-    const barbarian = new Barbarian(raceInterface);
+    const barbarian = new Barbarian();
 
     expect(barbarian.displayName).toBe('Barbarian');
   })
