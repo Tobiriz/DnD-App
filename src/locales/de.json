@@ -66,6 +66,53 @@
                 "draconic": "Drakonische Schrift",
                 "none": "Keine"
             }
+        },
+
+        "weaponProficiencies": {
+            "club": "Knüppel",
+            "dagger": "Dolch",
+            "greatclub": "Zweihandknüppel",
+            "handaxe": "Beil",
+            "javelin": "Wurfspeer",
+            "lightHammer": "Leichter Hammer",
+            "mace": "Streitkolben",
+            "quarterstaff": "Kampfstab",
+            "sickle": "Sichel",
+            "spear": "Speer",
+            "lightCrossbow": "Leichte Armbrust",
+            "dart": "Wurfpfeil",
+            "shortbow": "Kurzbogen",
+            "sling": "Schleuder",
+            "battleaxe": "Streitaxt",
+            "flail": "Flegel",
+            "glaive": "Gleve",
+            "greataxe": "Zweihandaxt",
+            "greatsword": "Zweihandschwert",
+            "halberd": "Hellebarde",
+            "lance": "Lanze",
+            "longsword": "Langschwert",
+            "maul": "Zweihandhammer",
+            "morningstar": "Morgenstern",
+            "pike": "Pike",
+            "rapier": "Rapier",
+            "scimitar": "Krummsäbel",
+            "shortsword": "Kurzschwert",
+            "trident": "Dreizack",
+            "warPick": "Kriegshacke",
+            "warhammer": "Kriegshammer",
+            "whip": "Peitsche",
+            "blowgun": "Blasrohr",
+            "handCrossbow": "Handarmbrust",
+            "heavyCrossbow": "Schwere Armbrust",
+            "longbow": "Langbogen",
+            "net": "Netz"
+        },
+
+        "weaponGroupProficiencies": {
+            "simpleMelee": "Einfache Nahkampfwaffen",
+            "simpleRanged": "Einfache Fernkampfwaffen",
+            "martialMelee": "Kriegerische Nahkampfwaffen",
+            "martialRanged": "Kriegerische Fernkampfwaffen"
         }
     }
 }

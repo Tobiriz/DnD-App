@@ -66,6 +66,53 @@
                 "draconic": "Draconic",
                 "none": "None"
             }
+        },
+
+        "weaponProficiencies": {
+            "club": "Club",
+            "dagger": "Dagger",
+            "greatclub": "Greatclub",
+            "handaxe": "Handaxe",
+            "javelin": "Javelin",
+            "lightHammer": "Light Hammer",
+            "mace": "Mace",
+            "quarterstaff": "Quarterstaff",
+            "sickle": "Sickle",
+            "spear": "Spear",
+            "lightCrossbow": "Light Crossbow",
+            "dart": "Dart",
+            "shortbow": "Shortbow",
+            "sling": "Sling",
+            "battleaxe": "Battleaxe",
+            "flail": "Flail",
+            "glaive": "Glaive",
+            "greataxe": "Greataxe",
+            "greatsword": "Greatsword",
+            "halberd": "Halberd",
+            "lance": "Lance",
+            "longsword": "Longsword",
+            "maul": "Maul",
+            "morningstar": "Morningstar",
+            "pike": "Pike",
+            "rapier": "Rapier",
+            "scimitar": "Scimitar",
+            "shortsword": "Shortsword",
+            "trident": "Trident",
+            "warPick": "War Pick",
+            "warhammer": "Warhammer",
+            "whip": "Whip",
+            "blowgun": "Blowgun",
+            "handCrossbow": "Hand Crossbow",
+            "heavyCrossbow": "Heavy Crossbow",
+            "longbow": "Longbow",
+            "net": "Net"
+        },
+
+        "weaponGroupProficiencies": {
+            "simpleMelee": "Simple Melee Weapons",
+            "simpleRanged": "Simple Ranged Weapons",
+            "martialMelee": "Martial Melee Weapons",
+            "martialRanged": "Martial Ranged Weapons"
         }
     }
 }
