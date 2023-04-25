@@ -18,3 +18,5 @@ export type AbilityScoreValues = Record<AbilityScoreType, number>;
 export type AbilityScores = Record<AbilityScoreType, AbilityScore>;
 
 export type AbilityScoreKeys = keyof typeof AbilityScoreType;
+
+export type AbilityScoreBonuses = Record<AbilityScoreType, number>;
