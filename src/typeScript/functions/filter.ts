@@ -1,6 +1,6 @@
 import { Language, Languages, LanguageKeys } from '../languages/languages';
 
-export function getSpokenLanguages(languages: Languages): Language[] {
+export function filterSpokenLanguages(languages: Languages): Language[] {
     const filteredLanguages: Language[] = [];
 
     for (const language in languages) {
