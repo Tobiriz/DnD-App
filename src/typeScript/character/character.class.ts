@@ -4,6 +4,9 @@ import { SkillProficiencies, Skills, SkillKeys } from './skills/skills';
 import { SpokenLanguages, Languages, LanguageKeys } from '../languages/languages';
 import { ScriptKeys } from '../languages/scripts';
 
+import { WeaponProficiencies, Weapons, WeaponGroupProficiencies, WeaponGroups, WeaponKeys, WeaponGroupKeys } from '../items/weapons/weapons';
+import { ArmorProficiencies } from '../items/armor/armor';
+
 // ----- import interfaces -----
 
 // ----- import interfaces for configuration -----
@@ -15,6 +18,8 @@ import { ScriptKeys } from '../languages/scripts';
 import { initializeSkills } from './skills/initializeSkills.function';
 import { initializeAbilityScores } from './abilities/initializeAbilityScores.function';
 import { initializeLanguages } from '../languages/initializeLanguages.function';
+import { initializeWeaponProficiencies } from '../items/weapons/initializeWeaponProficiencies.function';
+import { initializeWeaponGroupProficiencies } from '../items/weapons/initializeWeaponGroupProficiencies.function';
 
 // ----- import enums -----
 import { SupportedLanguages } from '../enums/supportedLanguages.enum';
@@ -31,6 +36,8 @@ export class Character {
     private _skills: Skills;
     private _proficiencyBonus: number;
     private _inGameLanguages: Languages;
+    private _weaponProficiencies: Weapons;
+    private _weaponGroupProficiencies: WeaponGroups;
 
     constructor(
         language: SupportedLanguages,
@@ -39,6 +46,8 @@ export class Character {
         skillProficiencies: SkillProficiencies,
         proficiencyBonus: number,
         spokenLanguages: SpokenLanguages,
+        weaponProficiencies: WeaponProficiencies,
+        weaponGroupProficiencies: WeaponGroupProficiencies,
     ) {
         this._interfaceLanguage = language;
         this._name = name;
@@ -46,6 +55,8 @@ export class Character {
         this._skills = initializeSkills(skillProficiencies);
         this._proficiencyBonus = proficiencyBonus;
         this._inGameLanguages = initializeLanguages(spokenLanguages);
+        this._weaponProficiencies = initializeWeaponProficiencies(weaponProficiencies, weaponGroupProficiencies);
+        this._weaponGroupProficiencies = initializeWeaponGroupProficiencies(weaponGroupProficiencies);
 
         this.setLanguage(language);
     }
@@ -90,6 +101,22 @@ export class Character {
 
     get spokenLanguages(): Languages {
         return this._inGameLanguages;
+    }
+
+    set spokenLanguages(spokenLanguages: Languages) {
+        this._inGameLanguages = spokenLanguages;
+    }
+
+    get weaponProficiencies(): Weapons {
+        return this._weaponProficiencies;
+    }
+
+    set weaponProficiencies(weaponProficiencies: Weapons) {
+        this._weaponProficiencies = weaponProficiencies;
+    }
+
+    get weaponGroupProficiencies(): WeaponGroups {
+        return this._weaponGroupProficiencies;
     }
     
     // ----- public methods -----
@@ -157,6 +184,16 @@ export class Character {
             this._inGameLanguages[languageKey].displayName = translationFile.character.languages[languageKey];
             const scriptKey = this._inGameLanguages[languageKey].script.name as ScriptKeys;
             this._inGameLanguages[languageKey].script.displayName = translationFile.character.languages.scripts[scriptKey];
+        }
+
+        for (const weapon in this._weaponProficiencies) {
+            const weaponKey = weapon as WeaponKeys;
+            this._weaponProficiencies[weaponKey].displayName = translationFile.character.weaponProficiencies[weaponKey];
+        }
+
+        for (const weaponGroup in this._weaponGroupProficiencies) {
+            const weaponGroupKey = weaponGroup as WeaponGroupKeys;
+            this._weaponGroupProficiencies[weaponGroupKey].displayName = translationFile.character.weaponGroupProficiencies[weaponGroupKey];
         }
     }
 }
