@@ -13,14 +13,7 @@ export interface AbilityScore {
     value: number;
 }
 
-export interface AbilityScoreValues {
-    strength: number;
-    dexterity: number;
-    constitution: number;
-    intelligence: number;
-    wisdom: number;
-    charisma: number;
-}
+export type AbilityScoreValues = Record<AbilityScoreType, number>;
 
 export type AbilityScores = Record<AbilityScoreType, AbilityScore>;
 
