@@ -37,6 +37,35 @@
                 "wisdom": "WEI",
                 "charisma": "CHA"
             }
+        },
+
+        "languages": {
+            "common": "Gemeinsprache",
+            "dwarvish": "Zwergisch",
+            "elvish": "Elfisch",
+            "giant": "Riesisch",
+            "gnomish": "Gnomisch",
+            "goblin": "Goblinisch",
+            "halfling": "Halblingisch",
+            "orc": "Orkisch",
+            "abyssal": "Abyssisch",
+            "celestial": "Himmlisch",
+            "draconic": "Drakonisch",
+            "deepSpeech": "Tiefensprache",
+            "infernal": "Infernalisch",
+            "primordial": "Ursprache",
+            "sylvan": "Sylvanisch",
+            "undercommon": "Untersprache",
+
+            "scripts": {
+                "common": "Gemeinschrift",
+                "dwarvish": "Zwergenschrift",
+                "elvish": "Elfenschrift",
+                "infernal": "Infernalische Schrift",
+                "celestial": "Himmlische Schrift",
+                "draconic": "Drakonische Schrift",
+                "none": "Keine"
+            }
         }
     }
 }

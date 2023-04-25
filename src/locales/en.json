@@ -37,6 +37,35 @@
                 "wisdom": "WIS",
                 "charisma": "CHA"
             }
+        },
+
+        "languages": {
+            "common": "Common",
+            "dwarvish": "Dwarvish",
+            "elvish": "Elvish",
+            "giant": "Giant",
+            "gnomish": "Gnomish",
+            "goblin": "Goblin",
+            "halfling": "Halfling",
+            "orc": "Orcish",
+            "abyssal": "Abyssal",
+            "celestial": "Celestial",
+            "draconic": "Draconic",
+            "deepSpeech": "Deep Speech",
+            "infernal": "Infernal",
+            "primordial": "Primordial",
+            "sylvan": "Sylvan",
+            "undercommon": "Undercommon",
+
+            "scripts": {
+                "common": "Common",
+                "dwarvish": "Dwarvish",
+                "elvish": "Elvish",
+                "infernal": "Infernal",
+                "celestial": "Celestial",
+                "draconic": "Draconic",
+                "none": "None"
+            }
         }
     }
 }
