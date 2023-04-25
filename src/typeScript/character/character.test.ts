@@ -5,6 +5,7 @@ import { AbilityScoreType, AbilityScoreValues } from './abilities/abilityScores'
 import { SkillProficiencies, SkillType } from './skills/skills';
 import { SupportedLanguages } from '../enums/supportedLanguages.enum';
 import { LanguageType, SpokenLanguages } from '../languages/languages';
+import { WeaponProficiencies, WeaponGroupProficiencies } from '../items/weapons/weapons';
 
 import { filterSpokenLanguages } from '../functions/filter';
 
@@ -57,8 +58,53 @@ const spokenLanguages: SpokenLanguages = {
     sylvan: false,
     undercommon: false,
 };
+const weaponProficiencies: WeaponProficiencies = {
+  club: true,
+  dagger: true,
+  greatclub: false,
+  handaxe: true,
+  javelin: true,
+  lightHammer: false,
+  mace: true,
+  quarterstaff: true,
+  sickle: true,
+  spear: true,
+  lightCrossbow: false,
+  dart: true,
+  shortbow: false,
+  sling: true,
+  battleaxe: true,
+  flail: true,
+  glaive: true,
+  greataxe: false,
+  greatsword: false,
+  halberd: false,
+  lance: true,
+  longsword: false,
+  maul: false,
+  morningstar: true,
+  pike: true,
+  rapier: false,
+  scimitar: false,
+  shortsword: true,
+  trident: true,
+  warPick: true,
+  warhammer: false,
+  whip: true,
+  blowgun: true,
+  handCrossbow: true,
+  heavyCrossbow: true,
+  longbow: false,
+  net: true,
+};
+const weaponGroupProficiencies: WeaponGroupProficiencies = {
+  simpleMelee: true,
+  simpleRanged: true,
+  martialMelee: false,
+  martialRanged: false,
+};
 
-const character = new Character(language, 'John Doe', abilityScoreValues, skillProficiencies, proficiencyBonus, spokenLanguages);
+const character = new Character(language, 'John Doe', abilityScoreValues, skillProficiencies, proficiencyBonus, spokenLanguages, weaponProficiencies, weaponGroupProficiencies);
 
 describe('Character', () => {
     it('should create a new instance of Character', () => {
@@ -282,6 +328,58 @@ describe('Character', () => {
         expect(filteredLanguageNames).toContain('Gemeinsprache');
         expect(filteredLanguageNames).toContain('Zwergisch');
         expect(filteredLanguageNames).toContain('Elfisch');
+      });
+    });
+
+    // ------------------------------------------------------------ //
+    // ----- WEAPON PROFICIENCIES --------------------------------- //
+    // ------------------------------------------------------------ //
+
+    describe('Weapon Proficiencies', () => {
+      it('should have a weapon proficiencies property', () => {
+        expect(character.weaponProficiencies).toBeDefined();
+      });
+
+      it('should have the correct weapon proficiencies', () => {
+        const weaponProficiencies = character.weaponProficiencies;
+
+        expect(weaponProficiencies.club.proficient).toBe(true);
+        expect(weaponProficiencies.dagger.proficient).toBe(true);
+        expect(weaponProficiencies.greatclub.proficient).toBe(true);
+        expect(weaponProficiencies.handaxe.proficient).toBe(true);
+        expect(weaponProficiencies.javelin.proficient).toBe(true);
+        expect(weaponProficiencies.lightHammer.proficient).toBe(true);
+        expect(weaponProficiencies.mace.proficient).toBe(true);
+        expect(weaponProficiencies.quarterstaff.proficient).toBe(true);
+        expect(weaponProficiencies.sickle.proficient).toBe(true);
+        expect(weaponProficiencies.spear.proficient).toBe(true);
+        expect(weaponProficiencies.lightCrossbow.proficient).toBe(true);
+        expect(weaponProficiencies.dart.proficient).toBe(true);
+        expect(weaponProficiencies.shortbow.proficient).toBe(true);
+        expect(weaponProficiencies.sling.proficient).toBe(true);
+        expect(weaponProficiencies.battleaxe.proficient).toBe(true);
+        expect(weaponProficiencies.flail.proficient).toBe(true);
+        expect(weaponProficiencies.glaive.proficient).toBe(true);
+        expect(weaponProficiencies.greataxe.proficient).toBe(false);
+        expect(weaponProficiencies.greatsword.proficient).toBe(false);
+        expect(weaponProficiencies.halberd.proficient).toBe(false);
+        expect(weaponProficiencies.lance.proficient).toBe(true);
+        expect(weaponProficiencies.longsword.proficient).toBe(false);
+        expect(weaponProficiencies.maul.proficient).toBe(false);
+        expect(weaponProficiencies.morningstar.proficient).toBe(true);
+        expect(weaponProficiencies.pike.proficient).toBe(true);
+        expect(weaponProficiencies.rapier.proficient).toBe(false);
+        expect(weaponProficiencies.scimitar.proficient).toBe(false);
+        expect(weaponProficiencies.shortsword.proficient).toBe(true);
+        expect(weaponProficiencies.trident.proficient).toBe(true);
+        expect(weaponProficiencies.warPick.proficient).toBe(true);
+        expect(weaponProficiencies.warhammer.proficient).toBe(false);
+        expect(weaponProficiencies.whip.proficient).toBe(true);
+        expect(weaponProficiencies.blowgun.proficient).toBe(true);
+        expect(weaponProficiencies.handCrossbow.proficient).toBe(true);
+        expect(weaponProficiencies.heavyCrossbow.proficient).toBe(true);
+        expect(weaponProficiencies.longbow.proficient).toBe(false);
+        expect(weaponProficiencies.net.proficient).toBe(true);
       });
     });
 
