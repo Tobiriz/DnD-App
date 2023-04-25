@@ -1,6 +1,8 @@
 
-import { AbilityScoreType, AbilityScore, AbilityScoreValues, AbilityScores, AbilityScoreKeys } from '../abilities/abilityScores';
-import { SkillType, Skill, SkillProficiencies, Skills, SkillKeys } from '../skills/skills';
+import { AbilityScoreValues, AbilityScores, AbilityScoreKeys } from '../abilities/abilityScores';
+import { SkillProficiencies, Skills, SkillKeys } from '../skills/skills';
+import { SpokenLanguages, Languages, LanguageKeys } from '../languages/languages';
+import { ScriptKeys } from '../languages/scripts';
 
 // ----- import interfaces -----
 
@@ -12,6 +14,7 @@ import { SkillType, Skill, SkillProficiencies, Skills, SkillKeys } from '../skil
 // ----- import functions for initialization -----
 import { initializeSkills } from '../skills/initializeSkills.function';
 import { initializeAbilityScores } from '../abilities/initializeAbilityScores.function';
+import { initializeLanguages } from '../languages/initializeLanguages.function';
 
 // ----- import enums -----
 import { SupportedLanguages } from '../enums/supportedLanguages.enum';
@@ -27,6 +30,7 @@ export class Character {
     private _abilityScores: AbilityScores;
     private _skills: Skills;
     private _proficiencyBonus: number;
+    private _spokenLanguages: Languages;
 
     constructor(
         language: SupportedLanguages,
@@ -34,12 +38,14 @@ export class Character {
         abilityScoreValues: AbilityScoreValues,
         skillProficiencies: SkillProficiencies,
         proficiencyBonus: number,
+        spokenLanguages: SpokenLanguages,
     ) {
         this._language = language;
         this._name = name;
         this._abilityScores = initializeAbilityScores(abilityScoreValues);
         this._skills = initializeSkills(skillProficiencies);
         this._proficiencyBonus = proficiencyBonus;
+        this._spokenLanguages = initializeLanguages(spokenLanguages);
 
         this.setLanguage(language);
     }
@@ -80,6 +86,10 @@ export class Character {
     
     set proficiencyBonus(proficiencyBonus: number) {
         this._proficiencyBonus = proficiencyBonus;
+    }
+
+    get spokenLanguages(): Languages {
+        return this._spokenLanguages;
     }
     
     // ----- public methods -----
@@ -131,22 +141,22 @@ export class Character {
         // Import the translation JSON file
         const translationFile = require(translationPath);
 
-        // Iterate over the ability scores in the current instance
         for (const abilityScore in this._abilityScores) {
-            // Cast the ability score to a specific type
-            const key = abilityScore as keyof AbilityScores;
-            // Update the display name of the ability score based on the translation JSON file
+            const key = abilityScore as AbilityScoreKeys;
             this._abilityScores[key].displayName = translationFile.character.abilities[key];
         }
 
-        // Iterate over the skills in the current instance
         for (const skill in this._skills) {
-            // Cast the skill to a specific type
-            const key = skill as keyof Skills;
-            // Update the display name of the skill based on the translation JSON file
+            const key = skill as SkillKeys;
             this._skills[key].displayName = translationFile.character.skills[key];
-            // Update the associated ability display name of the skill based on the translation JSON file
             this._skills[key].abilityDisplayName = translationFile.character.skills.abilityAbbreviations[this._skills[key].ability];
+        }
+
+        for (const language in this._spokenLanguages) {
+            const languageKey = language as LanguageKeys;
+            this._spokenLanguages[languageKey].displayName = translationFile.character.languages[languageKey];
+            const scriptKey = this._spokenLanguages[languageKey].script.name as ScriptKeys;
+            this._spokenLanguages[languageKey].script.displayName = translationFile.character.languages.scripts[scriptKey];
         }
     }
 }
