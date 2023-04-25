@@ -1,7 +1,7 @@
 
 import { Race } from './race.class.abstract'
 
-import { Race as RaceInterface } from '../../interfaces/race.interface'
+import { Race as RaceInterface } from '../interfaces/race.interface'
 
 
 export class Human extends Race {

@@ -1,5 +1,5 @@
 
-import { Race as RaceInterface } from '../../interfaces/race.interface'
+import { Race as RaceInterface } from '../interfaces/race.interface'
 
 
 export abstract class Race {

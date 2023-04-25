@@ -1,6 +1,6 @@
 
-import { AbilityScoreValues, AbilityScores, AbilityScoreKeys } from '../abilities/abilityScores';
-import { SkillProficiencies, Skills, SkillKeys } from '../skills/skills';
+import { AbilityScoreValues, AbilityScores, AbilityScoreKeys } from './abilities/abilityScores';
+import { SkillProficiencies, Skills, SkillKeys } from './skills/skills';
 import { SpokenLanguages, Languages, LanguageKeys } from '../languages/languages';
 import { ScriptKeys } from '../languages/scripts';
 
@@ -12,8 +12,8 @@ import { ScriptKeys } from '../languages/scripts';
 // ----- import functions -----
 
 // ----- import functions for initialization -----
-import { initializeSkills } from '../skills/initializeSkills.function';
-import { initializeAbilityScores } from '../abilities/initializeAbilityScores.function';
+import { initializeSkills } from './skills/initializeSkills.function';
+import { initializeAbilityScores } from './abilities/initializeAbilityScores.function';
 import { initializeLanguages } from '../languages/initializeLanguages.function';
 
 // ----- import enums -----
@@ -25,12 +25,12 @@ import { SupportedLanguages } from '../enums/supportedLanguages.enum';
 const TRANSLATION_PATH: string = '../../locales/';
 
 export class Character {
-    private _language: SupportedLanguages;
+    private _interfaceLanguage: SupportedLanguages;
     private _name: string;
     private _abilityScores: AbilityScores;
     private _skills: Skills;
     private _proficiencyBonus: number;
-    private _spokenLanguages: Languages;
+    private _inGameLanguages: Languages;
 
     constructor(
         language: SupportedLanguages,
@@ -40,12 +40,12 @@ export class Character {
         proficiencyBonus: number,
         spokenLanguages: SpokenLanguages,
     ) {
-        this._language = language;
+        this._interfaceLanguage = language;
         this._name = name;
         this._abilityScores = initializeAbilityScores(abilityScoreValues);
         this._skills = initializeSkills(skillProficiencies);
         this._proficiencyBonus = proficiencyBonus;
-        this._spokenLanguages = initializeLanguages(spokenLanguages);
+        this._inGameLanguages = initializeLanguages(spokenLanguages);
 
         this.setLanguage(language);
     }
@@ -53,7 +53,7 @@ export class Character {
     // ----- getters and setters -----
 
     get language(): string {
-        return this._language;
+        return this._interfaceLanguage;
     }
     
     get name(): string {
@@ -89,7 +89,7 @@ export class Character {
     }
 
     get spokenLanguages(): Languages {
-        return this._spokenLanguages;
+        return this._inGameLanguages;
     }
     
     // ----- public methods -----
@@ -100,8 +100,8 @@ export class Character {
      * @enum {Languages} - Valid languages are: 'en' (English), 'de' (German).
      * @throws {Error} If an unsupported language is passed as an argument.
      */
-    setLanguage(language: SupportedLanguages) {
-        this._language = language;
+    setLanguage(_interfaceLanguage: SupportedLanguages) {
+        this._interfaceLanguage = _interfaceLanguage;
         this.updateTranslations();
     }
     
@@ -137,7 +137,7 @@ export class Character {
      */
     private updateTranslations() {
         // Build the path to the translation JSON file for the selected language
-        const translationPath = TRANSLATION_PATH + this._language + '.json';
+        const translationPath = TRANSLATION_PATH + this._interfaceLanguage + '.json';
         // Import the translation JSON file
         const translationFile = require(translationPath);
 
@@ -152,11 +152,11 @@ export class Character {
             this._skills[key].abilityDisplayName = translationFile.character.skills.abilityAbbreviations[this._skills[key].ability];
         }
 
-        for (const language in this._spokenLanguages) {
+        for (const language in this._inGameLanguages) {
             const languageKey = language as LanguageKeys;
-            this._spokenLanguages[languageKey].displayName = translationFile.character.languages[languageKey];
-            const scriptKey = this._spokenLanguages[languageKey].script.name as ScriptKeys;
-            this._spokenLanguages[languageKey].script.displayName = translationFile.character.languages.scripts[scriptKey];
+            this._inGameLanguages[languageKey].displayName = translationFile.character.languages[languageKey];
+            const scriptKey = this._inGameLanguages[languageKey].script.name as ScriptKeys;
+            this._inGameLanguages[languageKey].script.displayName = translationFile.character.languages.scripts[scriptKey];
         }
     }
 }

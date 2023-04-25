@@ -1,12 +1,12 @@
 import { Character } from './character.class';
-import { Human } from '../classes/races/human.class'
+import { Human } from '../races/human.class'
 import { Race as RaceInterface } from '../interfaces/race.interface'
-import { AbilityScoreType, AbilityScoreValues } from '../abilities/abilityScores';
-import { SkillProficiencies, SkillType } from '../skills/skills';
+import { AbilityScoreType, AbilityScoreValues } from './abilities/abilityScores';
+import { SkillProficiencies, SkillType } from './skills/skills';
 import { SupportedLanguages } from '../enums/supportedLanguages.enum';
 import { LanguageType, SpokenLanguages } from '../languages/languages';
 
-import { filterLanguages } from '../functions/filter';
+import { filterSpokenLanguages } from '../functions/filter';
 
 const language: SupportedLanguages = SupportedLanguages.English;
 
@@ -256,7 +256,7 @@ describe('Character', () => {
       });
 
       it('should have the correct spoken languages', () => {
-        const filteredLanguages = filterLanguages(character.spokenLanguages);
+        const filteredLanguages = filterSpokenLanguages(character.spokenLanguages);
         const filteredLanguageNames = filteredLanguages.map(language => language.name);
 
         expect(filteredLanguageNames).toContain(LanguageType.common);
@@ -266,7 +266,7 @@ describe('Character', () => {
 
       it('should have the correct spoken languages in english', () => {
         character.setLanguage(SupportedLanguages.English);
-        const filteredLanguages = filterLanguages(character.spokenLanguages);
+        const filteredLanguages = filterSpokenLanguages(character.spokenLanguages);
         const filteredLanguageNames = filteredLanguages.map(language => language.displayName);
 
         expect(filteredLanguageNames).toContain('Common');
@@ -276,7 +276,7 @@ describe('Character', () => {
 
       it('should have the correct spoken languages in german', () => {
         character.setLanguage(SupportedLanguages.German);
-        const filteredLanguages = filterLanguages(character.spokenLanguages);
+        const filteredLanguages = filterSpokenLanguages(character.spokenLanguages);
         const filteredLanguageNames = filteredLanguages.map(language => language.displayName);
 
         expect(filteredLanguageNames).toContain('Gemeinsprache');
